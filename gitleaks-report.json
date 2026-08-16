@@ -1,0 +1,22 @@
+[
+ {
+  "RuleID": "hashicorp-tf-password",
+  "Description": "Identified a HashiCorp Terraform password field, risking unauthorized infrastructure configuration and security breaches.",
+  "StartLine": 24,
+  "EndLine": 24,
+  "StartColumn": 4,
+  "EndColumn": 35,
+  "Match": "admin_password=\"Admindevops123\"\r",
+  "Secret": "\"Admindevops123\"",
+  "File": "C:/DevOpsInsiders/Terraform Code/parent-child modules-9-Jul-26/child/virtual_machine/main.tf",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 3.75,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "C:/DevOpsInsiders/Terraform Code/parent-child modules-9-Jul-26/child/virtual_machine/main.tf:hashicorp-tf-password:24"
+ }
+]
