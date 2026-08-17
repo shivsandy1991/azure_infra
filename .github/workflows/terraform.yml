@@ -13,12 +13,12 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-          creds: |
-            {
-          client-id: "14f96396-240d-4b4a-a8a7-ef763d077ee2"
-          tenant-id: "2e08cf7f-8ba4-4151-bed9-f1b316f95dd9"
-          subscription-id: "158934aa-48ae-4aa1-bae5-78194afd79f"
-          clientSecret": "${{ secrets.az_secret }}"
+        creds: |
+          {
+            "clientId": "14f96396-240d-4b4a-a8a7-ef763d077ee2",
+            "clientSecret": "${{ secrets.az_secret }}",
+            "tenantId": "2e08cf7f-8ba4-4151-bed9-f1b316f95dd9",
+            "subscriptionId": "158934aa-48ae-4aa1-bae5-78194afd79f3"
           }
 
       - name: Setup Terraform
