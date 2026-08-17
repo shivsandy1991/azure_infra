@@ -1,12 +1,30 @@
+name: Terraform Azure Infrastructure
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
 permissions:
   contents: read
 
 jobs:
   terraform:
+    name: Terraform Deploy
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./Environment/prod
 
     steps:
 
+      # 1. Checkout Repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Login to Azure
       - name: Azure Login
         uses: azure/login@v2
         with:
@@ -18,17 +36,30 @@ jobs:
               "subscriptionId": "158934aa-48ae-4aa1-bae5-78194afd79f3"
             }
 
+      # 3. Install Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
+      # 4. Check Terraform Version
+      - name: Terraform Version
+        run: terraform version
+
+      # 5. Terraform Init
       - name: Terraform Init
         run: terraform init
 
+      # 6. Terraform Format Check
+      - name: Terraform Format Check
+        run: terraform fmt -check
+
+      # 7. Terraform Validate
       - name: Terraform Validate
         run: terraform validate
 
+      # 8. Terraform Plan
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
+      # 9. Terraform Apply
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
