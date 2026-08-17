@@ -13,7 +13,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v2
         with:
-        creds: |
+          creds: |
           {
             "clientId": "14f96396-240d-4b4a-a8a7-ef763d077ee2",
             "clientSecret": "${{ secrets.az_secret }}",
